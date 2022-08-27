@@ -3,7 +3,12 @@ import 'dart:io';
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:madee_kan/Widgets/loading_button.dart';
+import 'package:permission_handler/permission_handler.dart';
+
+import 'home_page.dart';
 
 class AddPembayaran extends StatefulWidget {
   const AddPembayaran({Key? key}) : super(key: key);
@@ -16,6 +21,8 @@ class _AddPembayaranState extends State<AddPembayaran> {
   DateTime selectedDate = DateTime.now();
   TimeOfDay startTime = TimeOfDay.now();
   TimeOfDay endTime = TimeOfDay.now();
+
+  bool isLoading = false;
 
   String? _currentName;
 
@@ -51,6 +58,16 @@ class _AddPembayaranState extends State<AddPembayaran> {
       });
   }
 
+  Future<bool> checkAndRequestCameraPermissions() async {
+    var status = await Permission.camera.status;
+    print(status);
+    if (status.isGranted) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   File? selectedImage;
   String base64Image = "";
 
@@ -58,9 +75,16 @@ class _AddPembayaranState extends State<AddPembayaran> {
     var image;
     final ImagePicker pick = ImagePicker();
     if (type == "camera") {
-      image = await pick.getImage(
-        source: ImageSource.camera,
-      );
+      if (await checkAndRequestCameraPermissions()) {
+        image = await pick.getImage(
+          source: ImageSource.camera,
+        );
+      } else {
+        Fluttertoast.showToast(
+            msg: "Permission Denied",
+            backgroundColor: Colors.red,
+            textColor: Colors.white);
+      }
     } else {
       image = await pick.getImage(
         source: ImageSource.gallery,
@@ -91,7 +115,7 @@ class _AddPembayaranState extends State<AddPembayaran> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Pilih Nama",
+            "Pilih Nama Nasabah",
             style: TextStyle(
               fontSize: 18,
             ),
@@ -267,8 +291,95 @@ class _AddPembayaranState extends State<AddPembayaran> {
     );
   }
 
+  Widget jumlahBayar(context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+    return Container(
+      margin: EdgeInsets.only(
+        top: height * 0.05,
+        left: width * 0.06,
+        right: width * 0.06,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Jumlah Bayar',
+            style: TextStyle(
+              fontSize: 18,
+            ),
+          ),
+          SizedBox(
+            height: height * 0.02,
+          ),
+          TextFormField(
+            keyboardType: TextInputType.number,
+            cursorColor: Colors.black,
+            // controller: controller,
+            decoration: InputDecoration(
+              hintText: "Banyaknya uang yang dibayar",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(
+                  18,
+                ),
+              ),
+              focusedBorder: OutlineInputBorder(
+                // borderRadius: BorderRadius.circular(18),
+                borderSide: BorderSide(color: Colors.blue),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget btnStore() {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+    return Center(
+      child: isLoading
+          ? LoadingButton(
+              margin: EdgeInsets.only(top: height * 0.05),
+            )
+          : Container(
+              width: width * .5,
+              height: height * .09,
+              margin: EdgeInsets.only(top: height * 0.05),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+                borderRadius: BorderRadius.circular(
+                  18,
+                ),
+              ),
+              child: TextButton(
+                onPressed: () {
+                  print('s');
+                  setState(() {
+                    isLoading = true;
+                  });
+                  Timer(Duration(seconds: 2), () {
+                    setState(() {
+                      isLoading = false;
+                    });
+                  });
+                },
+                child: Text(
+                  'Simpan Data',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500),
+                ),
+              ),
+            ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     DateTime today = DateTime.now();
     return Scaffold(
       appBar: AppBar(
@@ -291,6 +402,11 @@ class _AddPembayaranState extends State<AddPembayaran> {
               PilihNama(context),
               pilihTanggalBayar(context),
               buktiBayar(context),
+              jumlahBayar(context),
+              btnStore(),
+              SizedBox(
+                height: height * 0.1,
+              )
             ],
           )
         ],
