@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:madee_kan/cubit/page_cubit.dart';
+import 'package:provider/provider.dart';
 
 class CustomNavigationItem extends StatelessWidget {
   final String imageUrl;
@@ -15,7 +17,7 @@ class CustomNavigationItem extends StatelessWidget {
     final height = MediaQuery.of(context).size.height;
     return GestureDetector(
       onTap: () {
-        print("tapped");
+        context.read<PageCubit>().setPage(index);
       },
       child: Column(
         children: [
@@ -28,7 +30,9 @@ class CustomNavigationItem extends StatelessWidget {
               imageUrl,
               width: 24,
               height: 24,
-              color: Colors.black,
+              color: context.read<PageCubit>().state == index
+                  ? Colors.black
+                  : Colors.white,
             ),
           ),
           // Container(

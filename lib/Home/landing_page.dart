@@ -15,7 +15,7 @@ class _LandingPageState extends State<LandingPage> {
   Widget build(BuildContext context) {
     DateTime today = DateTime.now();
     String dateStr = "${today.day}-${today.month}-${today.year}";
-    String timeStr = "${today.hour}:${today.minute}";
+
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
 
