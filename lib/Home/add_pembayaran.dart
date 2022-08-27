@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:madee_kan/Widgets/loading_button.dart';
@@ -106,9 +107,9 @@ class _AddPembayaranState extends State<AddPembayaran> {
     final height = MediaQuery.of(context).size.height;
     return Container(
       margin: EdgeInsets.only(
-        top: width * 0.02,
-        left: width * 0.06,
-        right: width * 0.06,
+        top: 24.h,
+        left: 20.w,
+        right: 20.w,
       ),
       width: double.infinity,
       child: Column(
@@ -117,16 +118,16 @@ class _AddPembayaranState extends State<AddPembayaran> {
           Text(
             "Pilih Nama Nasabah",
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 18.sp,
             ),
           ),
           Container(
             width: double.infinity,
-            height: height * 0.07,
-            margin: EdgeInsets.only(top: width * 0.02),
+            height: 53.h,
+            margin: EdgeInsets.only(top: 10.h),
             padding: EdgeInsets.only(
-              left: width * 0.06,
-              right: width * 0.06,
+              left: 20.w,
+              right: 20.w,
             ),
             alignment: Alignment.center,
             decoration: BoxDecoration(
@@ -167,9 +168,9 @@ class _AddPembayaranState extends State<AddPembayaran> {
     final height = MediaQuery.of(context).size.height;
     return Container(
       margin: EdgeInsets.only(
-        top: width * 0.07,
-        left: width * 0.06,
-        right: width * 0.06,
+        top: 24.h,
+        left: 20.w,
+        right: 20.w,
       ),
       alignment: Alignment.topLeft,
       child: Column(
@@ -179,11 +180,11 @@ class _AddPembayaranState extends State<AddPembayaran> {
           Text(
             'Tanggal Bayar',
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 18.sp,
             ),
           ),
           SizedBox(
-            height: width * 0.03,
+            height: 10.h,
           ),
           Container(
             width: double.infinity,
@@ -195,7 +196,7 @@ class _AddPembayaranState extends State<AddPembayaran> {
             ),
           ),
           SizedBox(
-            height: width * 0.03,
+            height: 12.h,
           ),
           Text(
             "${selectedDate.day}/${selectedDate.month}/${selectedDate.year}",
@@ -210,9 +211,9 @@ class _AddPembayaranState extends State<AddPembayaran> {
     final height = MediaQuery.of(context).size.height;
     return Container(
       margin: EdgeInsets.only(
-        top: width * 0.07,
-        left: width * 0.06,
-        right: width * 0.06,
+        top: 24.h,
+        left: 20.w,
+        right: 20.w,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -220,15 +221,15 @@ class _AddPembayaranState extends State<AddPembayaran> {
           Text(
             'Bukti Bayar',
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 18.sp,
             ),
           ),
           Container(
             margin: EdgeInsets.only(
-              top: width * 0.03,
+              top: 12.h,
             ),
             width: double.infinity,
-            height: height * 0.3,
+            height: 250.h,
             child: ClipRRect(
                 child: selectedImage != null
                     ? Image.file(selectedImage!)
@@ -236,16 +237,16 @@ class _AddPembayaranState extends State<AddPembayaran> {
           ),
           Container(
             margin: EdgeInsets.only(
-              top: width * 0.07,
-              left: width * 0.06,
-              right: width * 0.06,
+              top: 20.h,
+              left: 20.w,
+              right: 20.w,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
-                  width: width * 0.3,
-                  height: height * 0.07,
+                  width: 130.w,
+                  height: 56.h,
                   decoration: BoxDecoration(
                     color: Colors.blue,
                     borderRadius: BorderRadius.circular(8),
@@ -256,13 +257,13 @@ class _AddPembayaranState extends State<AddPembayaran> {
                     },
                     child: Text(
                       "Camera",
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.white, fontSize: 14.sp),
                     ),
                   ),
                 ),
                 Container(
-                  width: width * 0.3,
-                  height: height * 0.07,
+                  width: 130.w,
+                  height: 56.h,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(
@@ -277,9 +278,7 @@ class _AddPembayaranState extends State<AddPembayaran> {
                     },
                     child: Text(
                       "Gallery",
-                      style: TextStyle(
-                        color: Colors.blue,
-                      ),
+                      style: TextStyle(color: Colors.blue, fontSize: 14.sp),
                     ),
                   ),
                 ),
@@ -296,9 +295,9 @@ class _AddPembayaranState extends State<AddPembayaran> {
     final height = MediaQuery.of(context).size.height;
     return Container(
       margin: EdgeInsets.only(
-        top: height * 0.05,
-        left: width * 0.06,
-        right: width * 0.06,
+        top: 32.h,
+        left: 20.w,
+        right: 20.w,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -306,11 +305,11 @@ class _AddPembayaranState extends State<AddPembayaran> {
           Text(
             'Jumlah Bayar',
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 18.sp,
             ),
           ),
           SizedBox(
-            height: height * 0.02,
+            height: 14.h,
           ),
           TextFormField(
             keyboardType: TextInputType.number,
@@ -340,12 +339,12 @@ class _AddPembayaranState extends State<AddPembayaran> {
     return Center(
       child: isLoading
           ? LoadingButton(
-              margin: EdgeInsets.only(top: height * 0.05),
+              margin: EdgeInsets.only(top: 35.h),
             )
           : Container(
               width: width * .5,
               height: height * .09,
-              margin: EdgeInsets.only(top: height * 0.05),
+              margin: EdgeInsets.only(top: 35.h),
               decoration: BoxDecoration(
                 color: Colors.blue,
                 borderRadius: BorderRadius.circular(
@@ -368,7 +367,7 @@ class _AddPembayaranState extends State<AddPembayaran> {
                   'Simpan Data',
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 20,
+                      fontSize: 20.sp,
                       fontWeight: FontWeight.w500),
                 ),
               ),
@@ -387,6 +386,7 @@ class _AddPembayaranState extends State<AddPembayaran> {
           'Pembayaran Bulan ${today.month}',
           style: TextStyle(
             color: Colors.blue,
+            fontSize: 22.sp,
           ),
         ),
         centerTitle: true,
@@ -405,7 +405,7 @@ class _AddPembayaranState extends State<AddPembayaran> {
               jumlahBayar(context),
               btnStore(),
               SizedBox(
-                height: height * 0.1,
+                height: 40.h,
               )
             ],
           )

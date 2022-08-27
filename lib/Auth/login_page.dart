@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:madee_kan/Auth/register_page.dart';
 import 'package:madee_kan/Home/home_page.dart';
 import 'package:madee_kan/Widgets/loading_button.dart';
@@ -32,8 +33,8 @@ class _LoginPageState extends State<LoginPage> {
         ),
         child: Center(
           child: Container(
-            width: MediaQuery.of(context).size.width * .9,
-            height: MediaQuery.of(context).size.height * .65,
+            width: 370.w,
+            height: 520.h,
             decoration: BoxDecoration(
               color: Colors.grey.shade200.withOpacity(0.7),
               borderRadius: BorderRadius.circular(
@@ -45,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 Center(
                   child: Container(
-                    margin: EdgeInsets.only(top: width * 0.02),
+                    margin: EdgeInsets.only(top: 20.h),
                     child: Icon(
                       Icons.account_box_outlined,
                       size: 100,
@@ -54,7 +55,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.all(width * 0.05),
+                  margin: EdgeInsets.all(20.w),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -66,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.all(width * 0.05),
+                  margin: EdgeInsets.all(20.w),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -84,8 +85,8 @@ class _LoginPageState extends State<LoginPage> {
                       : Column(
                           children: [
                             Container(
-                              width: width * .5,
-                              height: width * .17,
+                              width: 196.w,
+                              height: 70.h,
                               decoration: BoxDecoration(
                                 color: Colors.blue,
                                 borderRadius: BorderRadius.circular(
@@ -109,15 +110,15 @@ class _LoginPageState extends State<LoginPage> {
                                   'Login',
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 20,
+                                      fontSize: 20.sp,
                                       fontWeight: FontWeight.w500),
                                 ),
                               ),
                             ),
                             Container(
-                              width: width * .5,
-                              height: width * .17,
-                              margin: EdgeInsets.only(top: width * 0.08),
+                              width: 196.w,
+                              height: 70.h,
+                              margin: EdgeInsets.only(top: 20.h),
                               decoration: BoxDecoration(
                                 color: Colors.yellow.shade300,
                                 borderRadius: BorderRadius.circular(
@@ -126,6 +127,8 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                               child: TextButton(
                                 onPressed: () {
+                                  print("width $width");
+                                  print("height $height");
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -136,7 +139,7 @@ class _LoginPageState extends State<LoginPage> {
                                   'Register',
                                   style: TextStyle(
                                       color: Colors.black,
-                                      fontSize: 20,
+                                      fontSize: 20.sp,
                                       fontWeight: FontWeight.w500),
                                 ),
                               ),

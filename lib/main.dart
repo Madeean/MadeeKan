@@ -1,5 +1,8 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:madee_kan/cubit/page_cubit.dart';
 
 import 'Auth/login_page.dart';
@@ -19,9 +22,12 @@ class MyApp extends StatelessWidget {
           create: (context) => PageCubit(),
         ),
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: LoginPage(),
+      child: ScreenUtilInit(
+        designSize: const Size(393, 782),
+        builder: (context, child) => MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: LoginPage(),
+        ),
       ),
     );
   }

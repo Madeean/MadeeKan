@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:madee_kan/Widgets/custom_card_home.dart';
 
 class LandingPage extends StatefulWidget {
@@ -23,8 +24,8 @@ class _LandingPageState extends State<LandingPage> {
       return SafeArea(
         child: Container(
           margin: EdgeInsets.only(
-            left: width * 0.06,
-            right: width * 0.06,
+            left: 20.w,
+            right: 20.h,
           ),
           child: Column(
             children: [
@@ -37,7 +38,7 @@ class _LandingPageState extends State<LandingPage> {
                         Text(
                           'Madee',
                           style: TextStyle(
-                            fontSize: 24,
+                            fontSize: 24.sp,
                           ),
                         ),
                         Text(
@@ -55,7 +56,7 @@ class _LandingPageState extends State<LandingPage> {
                       Text(
                         dateStr,
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 20.sp,
                         ),
                       ),
                     ],
@@ -63,7 +64,7 @@ class _LandingPageState extends State<LandingPage> {
                 ],
               ),
               Container(
-                margin: EdgeInsets.only(top: width * .06),
+                margin: EdgeInsets.only(top: 21.h),
                 child: TextField(
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.search),
@@ -85,8 +86,8 @@ class _LandingPageState extends State<LandingPage> {
     Widget body() {
       return Container(
         margin: EdgeInsets.only(
-          left: width * 0.06,
-          right: width * 0.06,
+          left: 20.w,
+          right: 20.h,
         ),
         child: Column(
           children: [

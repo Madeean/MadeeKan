@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomCardHome extends StatefulWidget {
   const CustomCardHome({Key? key}) : super(key: key);
@@ -13,9 +14,9 @@ class _CustomCardHomeState extends State<CustomCardHome> {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Container(
-      margin: EdgeInsets.only(top: height * 0.06),
+      margin: EdgeInsets.only(top: 20.h),
       width: double.infinity,
-      height: height * 0.4,
+      height: 300.h,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
@@ -31,7 +32,7 @@ class _CustomCardHomeState extends State<CustomCardHome> {
           )
         ],
       ),
-      padding: EdgeInsets.all(width * 0.03),
+      padding: EdgeInsets.all(15.w),
       child: Column(
         children: [
           Row(
@@ -43,13 +44,13 @@ class _CustomCardHomeState extends State<CustomCardHome> {
                     Text(
                       'Made Reihans',
                       style: TextStyle(
-                        fontSize: 24,
+                        fontSize: 24.sp,
                       ),
                     ),
                     Text(
                       'Kampung dadap no5',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 18.sp,
                       ),
                     ),
                   ],
@@ -59,31 +60,31 @@ class _CustomCardHomeState extends State<CustomCardHome> {
                 'LUNAS',
                 style: TextStyle(
                   color: Colors.blue,
-                  fontSize: 18,
+                  fontSize: 18.sp,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ],
           ),
           Container(
-            margin: EdgeInsets.only(top: height * 0.03),
+            margin: EdgeInsets.only(top: 22.h),
             child: Center(
               child: Text(
                 'Rp. 100.000',
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 20.sp,
                 ),
               ),
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: height * 0.06),
+            padding: EdgeInsets.only(top: 50.h),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
-                  width: width * 0.3,
-                  height: height * .11,
+                  width: 140.w,
+                  height: 87.h,
                   decoration: BoxDecoration(
                     color: Colors.blue,
                     borderRadius: BorderRadius.circular(16),
@@ -94,13 +95,14 @@ class _CustomCardHomeState extends State<CustomCardHome> {
                       'Detail Transaksi',
                       style: TextStyle(
                         color: Colors.white,
+                        fontSize: 14.sp,
                       ),
                     ),
                   ),
                 ),
                 Container(
-                  width: width * 0.35,
-                  height: height * .11,
+                  width: 140.w,
+                  height: 87.h,
                   decoration: BoxDecoration(
                     color: Colors.indigo,
                     borderRadius: BorderRadius.circular(16),
@@ -110,6 +112,7 @@ class _CustomCardHomeState extends State<CustomCardHome> {
                     child: Text(
                       'Detail Pengguna',
                       style: TextStyle(
+                        fontSize: 14.sp,
                         color: Colors.white,
                       ),
                     ),

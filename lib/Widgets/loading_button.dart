@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoadingButton extends StatefulWidget {
   final double width;
@@ -22,8 +23,8 @@ class _LoadingButtonState extends State<LoadingButton> {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Container(
-      width: width * .5,
-      height: width * .17,
+      width: 196.w,
+      height: 70.h,
       margin: widget.margin,
       decoration: BoxDecoration(
         color: Colors.blue,
