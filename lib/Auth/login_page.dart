@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:madee_kan/Auth/register_page.dart';
 import 'package:madee_kan/Home/home_page.dart';
 import 'package:madee_kan/Widgets/loading_button.dart';
 
@@ -32,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
         child: Center(
           child: Container(
             width: MediaQuery.of(context).size.width * .9,
-            height: MediaQuery.of(context).size.height * .5,
+            height: MediaQuery.of(context).size.height * .65,
             decoration: BoxDecoration(
               color: Colors.grey.shade200.withOpacity(0.7),
               borderRadius: BorderRadius.circular(
@@ -80,36 +81,67 @@ class _LoginPageState extends State<LoginPage> {
                 Center(
                   child: isloading
                       ? LoadingButton()
-                      : Container(
-                          width: width * .5,
-                          height: width * .17,
-                          decoration: BoxDecoration(
-                            color: Colors.blue,
-                            borderRadius: BorderRadius.circular(
-                              18,
+                      : Column(
+                          children: [
+                            Container(
+                              width: width * .5,
+                              height: width * .17,
+                              decoration: BoxDecoration(
+                                color: Colors.blue,
+                                borderRadius: BorderRadius.circular(
+                                  18,
+                                ),
+                              ),
+                              child: TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    isloading = true;
+                                  });
+                                  Timer(Duration(seconds: 2), () {
+                                    Navigator.pushAndRemoveUntil(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => HomePage()),
+                                        (route) => false);
+                                  });
+                                },
+                                child: Text(
+                                  'Login',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ),
                             ),
-                          ),
-                          child: TextButton(
-                            onPressed: () {
-                              setState(() {
-                                isloading = true;
-                              });
-                              Timer(Duration(seconds: 2), () {
-                                Navigator.pushAndRemoveUntil(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => HomePage()),
-                                    (route) => false);
-                              });
-                            },
-                            child: Text(
-                              'Login',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w500),
+                            Container(
+                              width: width * .5,
+                              height: width * .17,
+                              margin: EdgeInsets.only(top: width * 0.08),
+                              decoration: BoxDecoration(
+                                color: Colors.yellow.shade300,
+                                borderRadius: BorderRadius.circular(
+                                  18,
+                                ),
+                              ),
+                              child: TextButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              RegisterPage()));
+                                },
+                                child: Text(
+                                  'Register',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ),
                             ),
-                          ),
+                          ],
                         ),
                 ),
               ],

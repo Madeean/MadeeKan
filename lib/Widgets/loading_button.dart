@@ -24,6 +24,7 @@ class _LoadingButtonState extends State<LoadingButton> {
     return Container(
       width: width * .5,
       height: width * .17,
+      margin: widget.margin,
       decoration: BoxDecoration(
         color: Colors.blue,
         borderRadius: BorderRadius.circular(
