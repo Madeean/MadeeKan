@@ -59,16 +59,6 @@ class _AddPembayaranState extends State<AddPembayaran> {
       });
   }
 
-  Future<bool> checkAndRequestCameraPermissions() async {
-    var status = await Permission.camera.status;
-    print(status);
-    if (status.isGranted) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
   File? selectedImage;
   String base64Image = "";
 
@@ -76,15 +66,16 @@ class _AddPembayaranState extends State<AddPembayaran> {
     var image;
     final ImagePicker pick = ImagePicker();
     if (type == "camera") {
-      if (await checkAndRequestCameraPermissions()) {
+      try {
         image = await pick.getImage(
           source: ImageSource.camera,
         );
-      } else {
+      } catch (error) {
         Fluttertoast.showToast(
-            msg: "Permission Denied",
-            backgroundColor: Colors.red,
-            textColor: Colors.white);
+          msg: "Permission ditolak",
+          textColor: Colors.white,
+          backgroundColor: Colors.red,
+        );
       }
     } else {
       image = await pick.getImage(

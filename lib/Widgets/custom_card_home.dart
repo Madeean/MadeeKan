@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:madee_kan/Home/detail_transaksi_page.dart';
 
 class CustomCardHome extends StatefulWidget {
   const CustomCardHome({Key? key}) : super(key: key);
@@ -78,31 +79,36 @@ class _CustomCardHomeState extends State<CustomCardHome> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 50.h),
+            padding: EdgeInsets.only(top: 30.h),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
                   width: 140.w,
-                  height: 87.h,
+                  height: 67.h,
                   decoration: BoxDecoration(
                     color: Colors.blue,
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DetailTransaksi()));
+                    },
                     child: Text(
                       'Detail Transaksi',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 14.sp,
+                        fontSize: 10.sp,
                       ),
                     ),
                   ),
                 ),
                 Container(
                   width: 140.w,
-                  height: 87.h,
+                  height: 67.h,
                   decoration: BoxDecoration(
                     color: Colors.indigo,
                     borderRadius: BorderRadius.circular(16),
@@ -112,7 +118,7 @@ class _CustomCardHomeState extends State<CustomCardHome> {
                     child: Text(
                       'Detail Pengguna',
                       style: TextStyle(
-                        fontSize: 14.sp,
+                        fontSize: 10.sp,
                         color: Colors.white,
                       ),
                     ),

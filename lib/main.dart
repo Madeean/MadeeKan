@@ -23,7 +23,8 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: ScreenUtilInit(
-        designSize: const Size(393, 782),
+        // designSize: const Size(393, 782),
+        designSize: const Size(360, 732),
         builder: (context, child) => MaterialApp(
           debugShowCheckedModeBanner: false,
           home: LoginPage(),

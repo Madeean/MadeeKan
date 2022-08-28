@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../Home/detail_transaksi_page.dart';
+
 class CustomCardBelumLunas extends StatelessWidget {
   final String nama;
   final String alamat;
@@ -23,7 +25,7 @@ class CustomCardBelumLunas extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: 20.h, left: 10.w, right: 10.w),
       width: double.infinity,
-      height: 300.h,
+      height: 350.h,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
@@ -91,42 +93,51 @@ class CustomCardBelumLunas extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 50.h),
+            padding: EdgeInsets.only(top: 30.h),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
                   width: 140.w,
-                  height: 87.h,
+                  height: 67.h,
                   decoration: BoxDecoration(
                     color: Colors.blue,
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      'Detail Transaksi',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14.sp,
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DetailTransaksi()));
+                    },
+                    child: Expanded(
+                      child: Text(
+                        'Detail Transaksi',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 10.sp,
+                        ),
                       ),
                     ),
                   ),
                 ),
                 Container(
                   width: 140.w,
-                  height: 87.h,
+                  height: 67.h,
                   decoration: BoxDecoration(
                     color: Colors.indigo,
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: TextButton(
                     onPressed: () {},
-                    child: Text(
-                      'Detail Pengguna',
-                      style: TextStyle(
-                        fontSize: 14.sp,
-                        color: Colors.white,
+                    child: Expanded(
+                      child: Text(
+                        'Detail Pengguna',
+                        style: TextStyle(
+                          fontSize: 10.sp,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),

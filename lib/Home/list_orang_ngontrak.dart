@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:madee_kan/Home/tambah_orang_ngontrak.dart';
 import 'package:madee_kan/Widgets/list_orang_ngontrak.dart';
 
 class ListOrangNgontrak extends StatefulWidget {
@@ -25,7 +26,12 @@ class _ListOrangNgontrakState extends State<ListOrangNgontrak> {
         actions: [
           TextButton(
             onPressed: () {
-              print('tap');
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => TambahOrangNgontrak(),
+                ),
+              );
             },
             child: Text(
               'Tambah Data',
