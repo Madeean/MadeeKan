@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:madee_kan/Home/add_pembayaran.dart';
+import 'package:madee_kan/Home/belum_lunas_page.dart';
 import 'package:madee_kan/Home/list_orang_ngontrak.dart';
 import 'package:madee_kan/Home/setting_page.dart';
 import 'package:madee_kan/Widgets/customNavigationItem.dart';
@@ -25,6 +26,8 @@ class _HomePageState extends State<HomePage> {
       case 2:
         return ListOrangNgontrak();
       case 3:
+        return BelumLunasPage();
+      case 4:
         return SettingPage();
       default:
         return LandingPage();
@@ -60,8 +63,12 @@ class _HomePageState extends State<HomePage> {
             index: 2,
           ),
           CustomNavigationItem(
-            imageUrl: 'assets/icon_settings.png',
+            imageUrl: 'assets/cross-circle.png',
             index: 3,
+          ),
+          CustomNavigationItem(
+            imageUrl: 'assets/icon_settings.png',
+            index: 4,
           ),
         ],
       ),
