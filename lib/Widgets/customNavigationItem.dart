@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:madee_kan/cubit/page_cubit.dart';
 import 'package:provider/provider.dart';
 
@@ -24,12 +25,12 @@ class CustomNavigationItem extends StatelessWidget {
           SizedBox(),
           Container(
             margin: EdgeInsets.only(
-              top: width * 0.06,
+              top: 20.sp,
             ),
             child: Image.asset(
               imageUrl,
-              width: 24,
-              height: 24,
+              width: 24.w,
+              height: 24.h,
               color: context.read<PageCubit>().state == index
                   ? Colors.black
                   : Colors.white,

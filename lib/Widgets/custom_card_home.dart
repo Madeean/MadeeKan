@@ -15,12 +15,12 @@ class _CustomCardHomeState extends State<CustomCardHome> {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Container(
-      margin: EdgeInsets.only(top: 20.h),
+      margin: EdgeInsets.only(top: 20.sp),
       width: double.infinity,
       height: 300.h,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(16.sp),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(.7),
@@ -33,7 +33,7 @@ class _CustomCardHomeState extends State<CustomCardHome> {
           )
         ],
       ),
-      padding: EdgeInsets.all(15.w),
+      padding: EdgeInsets.all(15.sp),
       child: Column(
         children: [
           Row(
@@ -68,7 +68,7 @@ class _CustomCardHomeState extends State<CustomCardHome> {
             ],
           ),
           Container(
-            margin: EdgeInsets.only(top: 22.h),
+            margin: EdgeInsets.only(top: 22.sp),
             child: Center(
               child: Text(
                 'Rp. 100.000',
@@ -79,7 +79,7 @@ class _CustomCardHomeState extends State<CustomCardHome> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 30.h),
+            padding: EdgeInsets.only(top: 30.sp),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [

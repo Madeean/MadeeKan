@@ -49,10 +49,10 @@ class _ListOrangNgontrakState extends State<ListOrangNgontrak> {
         },
         child: GridView.count(
           crossAxisCount: 2,
-          crossAxisSpacing: 3.h,
-          mainAxisSpacing: 2.h,
+          crossAxisSpacing: 3.sp,
+          mainAxisSpacing: 2.sp,
           scrollDirection: Axis.vertical,
-          padding: EdgeInsets.only(bottom: 20.h),
+          padding: EdgeInsets.only(bottom: 20.sp),
           children: [
             DaftarOrangNgontrak(),
             DaftarOrangNgontrak(),

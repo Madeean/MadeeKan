@@ -23,7 +23,7 @@ class CustomCardBelumLunas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 20.h, left: 10.w, right: 10.w),
+      margin: EdgeInsets.only(top: 20.sp, left: 10.sp, right: 10.sp),
       width: double.infinity,
       height: 350.h,
       decoration: BoxDecoration(
@@ -41,7 +41,7 @@ class CustomCardBelumLunas extends StatelessWidget {
           )
         ],
       ),
-      padding: EdgeInsets.all(15.w),
+      padding: EdgeInsets.all(15.sp),
       child: Column(
         children: [
           Row(
@@ -82,7 +82,7 @@ class CustomCardBelumLunas extends StatelessWidget {
             ],
           ),
           Container(
-            margin: EdgeInsets.only(top: 22.h),
+            margin: EdgeInsets.only(top: 22.sp),
             child: Center(
               child: Text(
                 '$baruBayar / $jumlahBayar',
@@ -93,7 +93,7 @@ class CustomCardBelumLunas extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 30.h),
+            padding: EdgeInsets.only(top: 30.sp),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [

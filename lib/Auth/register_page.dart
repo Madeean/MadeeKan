@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:madee_kan/Widgets/loading_button.dart';
 
 import '../Home/home_page.dart';
@@ -39,18 +40,21 @@ class _RegisterPageState extends State<RegisterPage> {
             children: [
               Container(
                 margin: EdgeInsets.only(
-                    left: width * 0.05, right: width * 0.05, top: width * 0.05),
+                  left: 20.sp,
+                  right: 20.sp,
+                  top: 20.sp,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       'Name',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 16.sp,
                       ),
                     ),
                     SizedBox(
-                      height: height * 0.01,
+                      height: 10.sp,
                     ),
                     TextFormField(
                       maxLines: 1,
@@ -75,9 +79,9 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               Container(
                 margin: EdgeInsets.only(
-                  left: width * 0.05,
-                  right: width * 0.05,
-                  top: width * 0.05,
+                  left: 20.sp,
+                  right: 20.sp,
+                  top: 20.sp,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,11 +89,11 @@ class _RegisterPageState extends State<RegisterPage> {
                     Text(
                       'Email',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 16.sp,
                       ),
                     ),
                     SizedBox(
-                      height: height * 0.01,
+                      height: 10.sp,
                     ),
                     TextFormField(
                       cursorColor: Colors.black,
@@ -113,9 +117,9 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               Container(
                 margin: EdgeInsets.only(
-                  left: width * 0.05,
-                  right: width * 0.05,
-                  top: width * 0.05,
+                  left: 20.sp,
+                  right: 20.sp,
+                  top: 20.sp,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -123,11 +127,11 @@ class _RegisterPageState extends State<RegisterPage> {
                     Text(
                       'Your kontrakan Name',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 16.sp,
                       ),
                     ),
                     SizedBox(
-                      height: height * 0.01,
+                      height: 10.sp,
                     ),
                     TextFormField(
                       cursorColor: Colors.black,
@@ -151,9 +155,9 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               Container(
                 margin: EdgeInsets.only(
-                  left: width * 0.05,
-                  right: width * 0.05,
-                  top: width * 0.05,
+                  left: 20.sp,
+                  right: 20.sp,
+                  top: 20.sp,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -161,11 +165,11 @@ class _RegisterPageState extends State<RegisterPage> {
                     Text(
                       'How Many rooms you have?',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 16.sp,
                       ),
                     ),
                     SizedBox(
-                      height: height * 0.01,
+                      height: 10.sp,
                     ),
                     TextFormField(
                       keyboardType: TextInputType.number,
@@ -190,9 +194,9 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               Container(
                 margin: EdgeInsets.only(
-                  left: width * 0.05,
-                  right: width * 0.05,
-                  top: width * 0.05,
+                  left: 20.sp,
+                  right: 20.sp,
+                  top: 20.sp,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -200,11 +204,11 @@ class _RegisterPageState extends State<RegisterPage> {
                     Text(
                       'Password',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 16.sp,
                       ),
                     ),
                     SizedBox(
-                      height: height * 0.01,
+                      height: 10.sp,
                     ),
                     TextFormField(
                       cursorColor: Colors.black,
@@ -229,12 +233,12 @@ class _RegisterPageState extends State<RegisterPage> {
               Center(
                 child: isLoading
                     ? LoadingButton(
-                        margin: EdgeInsets.only(top: width * 0.1),
+                        margin: EdgeInsets.only(top: 10.sp),
                       )
                     : Container(
-                        width: width * .5,
-                        height: width * .17,
-                        margin: EdgeInsets.only(top: width * 0.1),
+                        width: 196.w,
+                        height: 70.h,
+                        margin: EdgeInsets.only(top: 20.sp, bottom: 10.sp),
                         decoration: BoxDecoration(
                           color: Colors.blue,
                           borderRadius: BorderRadius.circular(
@@ -258,7 +262,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             'Register',
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 20,
+                                fontSize: 20.sp,
                                 fontWeight: FontWeight.w500),
                           ),
                         ),

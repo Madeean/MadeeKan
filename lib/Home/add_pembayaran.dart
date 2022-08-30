@@ -98,9 +98,9 @@ class _AddPembayaranState extends State<AddPembayaran> {
     final height = MediaQuery.of(context).size.height;
     return Container(
       margin: EdgeInsets.only(
-        top: 24.h,
-        left: 20.w,
-        right: 20.w,
+        top: 24.sp,
+        left: 20.sp,
+        right: 20.sp,
       ),
       width: double.infinity,
       child: Column(
@@ -115,10 +115,10 @@ class _AddPembayaranState extends State<AddPembayaran> {
           Container(
             width: double.infinity,
             height: 53.h,
-            margin: EdgeInsets.only(top: 10.h),
+            margin: EdgeInsets.only(top: 10.sp),
             padding: EdgeInsets.only(
-              left: 20.w,
-              right: 20.w,
+              left: 20.sp,
+              right: 20.sp,
             ),
             alignment: Alignment.center,
             decoration: BoxDecoration(
@@ -159,9 +159,9 @@ class _AddPembayaranState extends State<AddPembayaran> {
     final height = MediaQuery.of(context).size.height;
     return Container(
       margin: EdgeInsets.only(
-        top: 24.h,
-        left: 20.w,
-        right: 20.w,
+        top: 24.sp,
+        left: 20.sp,
+        right: 20.sp,
       ),
       alignment: Alignment.topLeft,
       child: Column(
@@ -175,7 +175,7 @@ class _AddPembayaranState extends State<AddPembayaran> {
             ),
           ),
           SizedBox(
-            height: 10.h,
+            height: 10.sp,
           ),
           Container(
             width: double.infinity,
@@ -187,7 +187,7 @@ class _AddPembayaranState extends State<AddPembayaran> {
             ),
           ),
           SizedBox(
-            height: 12.h,
+            height: 12.sp,
           ),
           Text(
             "${selectedDate.day}/${selectedDate.month}/${selectedDate.year}",
@@ -202,9 +202,9 @@ class _AddPembayaranState extends State<AddPembayaran> {
     final height = MediaQuery.of(context).size.height;
     return Container(
       margin: EdgeInsets.only(
-        top: 24.h,
-        left: 20.w,
-        right: 20.w,
+        top: 24.sp,
+        left: 20.sp,
+        right: 20.sp,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -217,7 +217,7 @@ class _AddPembayaranState extends State<AddPembayaran> {
           ),
           Container(
             margin: EdgeInsets.only(
-              top: 12.h,
+              top: 12.sp,
             ),
             width: double.infinity,
             height: 250.h,
@@ -228,9 +228,9 @@ class _AddPembayaranState extends State<AddPembayaran> {
           ),
           Container(
             margin: EdgeInsets.only(
-              top: 20.h,
-              left: 20.w,
-              right: 20.w,
+              top: 20.sp,
+              left: 20.sp,
+              right: 20.sp,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -286,9 +286,9 @@ class _AddPembayaranState extends State<AddPembayaran> {
     final height = MediaQuery.of(context).size.height;
     return Container(
       margin: EdgeInsets.only(
-        top: 32.h,
-        left: 20.w,
-        right: 20.w,
+        top: 32.sp,
+        left: 20.sp,
+        right: 20.sp,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -300,7 +300,7 @@ class _AddPembayaranState extends State<AddPembayaran> {
             ),
           ),
           SizedBox(
-            height: 14.h,
+            height: 14.sp,
           ),
           TextFormField(
             keyboardType: TextInputType.number,
@@ -330,12 +330,12 @@ class _AddPembayaranState extends State<AddPembayaran> {
     return Center(
       child: isLoading
           ? LoadingButton(
-              margin: EdgeInsets.only(top: 35.h),
+              margin: EdgeInsets.only(top: 35.sp),
             )
           : Container(
-              width: width * .5,
-              height: height * .09,
-              margin: EdgeInsets.only(top: 35.h),
+              width: 196.w,
+              height: 70.h,
+              margin: EdgeInsets.only(top: 35.sp),
               decoration: BoxDecoration(
                 color: Colors.blue,
                 borderRadius: BorderRadius.circular(
@@ -396,7 +396,7 @@ class _AddPembayaranState extends State<AddPembayaran> {
               jumlahBayar(context),
               btnStore(),
               SizedBox(
-                height: 40.h,
+                height: 40.sp,
               )
             ],
           )

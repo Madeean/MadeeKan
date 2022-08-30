@@ -36,9 +36,9 @@ class _LoginPageState extends State<LoginPage> {
             width: 370.w,
             height: 520.h,
             decoration: BoxDecoration(
-              color: Colors.grey.shade200.withOpacity(0.7),
+              color: Colors.grey.shade200.withOpacity(0.7.sp),
               borderRadius: BorderRadius.circular(
-                17,
+                17.sp,
               ),
             ),
             child: Column(
@@ -46,16 +46,16 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 Center(
                   child: Container(
-                    margin: EdgeInsets.only(top: 20.h),
+                    margin: EdgeInsets.only(top: 20.sp),
                     child: Icon(
                       Icons.account_box_outlined,
-                      size: 100,
+                      size: 100.sp,
                       color: Colors.grey.shade100,
                     ),
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.all(20.w),
+                  margin: EdgeInsets.all(20.sp),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -67,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.all(20.w),
+                  margin: EdgeInsets.all(20.sp),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -118,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
                             Container(
                               width: 196.w,
                               height: 70.h,
-                              margin: EdgeInsets.only(top: 20.h),
+                              margin: EdgeInsets.only(top: 20.sp),
                               decoration: BoxDecoration(
                                 color: Colors.yellow.shade300,
                                 borderRadius: BorderRadius.circular(

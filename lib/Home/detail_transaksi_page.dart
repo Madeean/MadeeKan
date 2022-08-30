@@ -33,29 +33,34 @@ class _DetailTransaksiState extends State<DetailTransaksi> {
   Widget Data() {
     return Container(
       width: double.infinity,
-      margin: EdgeInsets.only(left: 20.w, right: 20.w, top: 25.h),
+      margin: EdgeInsets.only(left: 20.sp, right: 20.sp, top: 25.sp),
       child: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'Nama pengontrak: ',
-                style: TextStyle(
-                  fontSize: 18.sp,
+              Expanded(
+                child: Text(
+                  'Nama pengontrak: ',
+                  style: TextStyle(
+                    fontSize: 18.sp,
+                  ),
                 ),
               ),
-              Text(
-                'Made Reihan',
-                style: TextStyle(
-                  fontSize: 18.sp,
+              Spacer(),
+              Expanded(
+                child: Text(
+                  'Made Reihan',
+                  style: TextStyle(
+                    fontSize: 18.sp,
+                  ),
                 ),
               ),
             ],
           ),
           Divider(
             color: Colors.grey,
-            thickness: 1,
+            thickness: 1.sp,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -68,6 +73,7 @@ class _DetailTransaksiState extends State<DetailTransaksi> {
                   ),
                 ),
               ),
+              Spacer(),
               Expanded(
                 child: Text(
                   'Kampung dadap no5',
@@ -80,29 +86,34 @@ class _DetailTransaksiState extends State<DetailTransaksi> {
           ),
           Divider(
             color: Colors.grey,
-            thickness: 1,
+            thickness: 1.sp,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'Status Bulan ini : ',
-                style: TextStyle(
-                  fontSize: 18.sp,
+              Expanded(
+                child: Text(
+                  'Status Bulan ini : ',
+                  style: TextStyle(
+                    fontSize: 18.sp,
+                  ),
                 ),
               ),
-              Text(
-                'BELUM LUNAS',
-                style: TextStyle(
-                  fontSize: 18.sp,
-                  color: isLunas == "LUNAS" ? Colors.blue : Colors.red,
+              Spacer(),
+              Expanded(
+                child: Text(
+                  'BELUM LUNAS',
+                  style: TextStyle(
+                    fontSize: 18.sp,
+                    color: isLunas == "LUNAS" ? Colors.blue : Colors.red,
+                  ),
                 ),
               ),
             ],
           ),
           Divider(
             color: Colors.grey,
-            thickness: 1,
+            thickness: 1.sp,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -115,6 +126,7 @@ class _DetailTransaksiState extends State<DetailTransaksi> {
                   ),
                 ),
               ),
+              Spacer(),
               Text(
                 '100.000',
                 style: TextStyle(
@@ -125,7 +137,7 @@ class _DetailTransaksiState extends State<DetailTransaksi> {
           ),
           Divider(
             color: Colors.grey,
-            thickness: 1,
+            thickness: 1.sp,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -138,6 +150,7 @@ class _DetailTransaksiState extends State<DetailTransaksi> {
                   ),
                 ),
               ),
+              Spacer(),
               Text(
                 '100.000',
                 style: TextStyle(
@@ -148,7 +161,7 @@ class _DetailTransaksiState extends State<DetailTransaksi> {
           ),
           Divider(
             color: Colors.grey,
-            thickness: 1,
+            thickness: 1.sp,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -159,6 +172,7 @@ class _DetailTransaksiState extends State<DetailTransaksi> {
                   fontSize: 18.sp,
                 ),
               ),
+              Spacer(),
               Text(
                 '26-12-2019',
                 style: TextStyle(
@@ -169,7 +183,7 @@ class _DetailTransaksiState extends State<DetailTransaksi> {
           ),
           Divider(
             color: Colors.grey,
-            thickness: 1,
+            thickness: 1.sp,
           ),
         ],
       ),
@@ -228,7 +242,7 @@ class _DetailTransaksiState extends State<DetailTransaksi> {
         : Container(
             width: 150.w,
             height: 70.h,
-            margin: EdgeInsets.only(top: 30.h, bottom: 30.h),
+            margin: EdgeInsets.only(top: 30.sp, bottom: 30.sp),
             decoration: BoxDecoration(
               color: Colors.red,
               borderRadius: BorderRadius.circular(10),

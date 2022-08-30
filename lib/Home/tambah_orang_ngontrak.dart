@@ -92,9 +92,9 @@ class _TambahOrangNgontrakState extends State<TambahOrangNgontrak> {
             children: [
               Container(
                 margin: EdgeInsets.only(
-                  left: 20.w,
-                  right: 20.2,
-                  top: 20.h,
+                  left: 20.sp,
+                  right: 20.sp,
+                  top: 20.sp,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -102,11 +102,11 @@ class _TambahOrangNgontrakState extends State<TambahOrangNgontrak> {
                     Text(
                       'Name',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 16.sp,
                       ),
                     ),
                     SizedBox(
-                      height: 10.h,
+                      height: 10.sp,
                     ),
                     TextFormField(
                       cursorColor: Colors.black,
@@ -130,9 +130,9 @@ class _TambahOrangNgontrakState extends State<TambahOrangNgontrak> {
               ),
               Container(
                 margin: EdgeInsets.only(
-                  left: 20.w,
-                  right: 20.2,
-                  top: 20.h,
+                  left: 20.sp,
+                  right: 20.sp,
+                  top: 20.sp,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -140,11 +140,11 @@ class _TambahOrangNgontrakState extends State<TambahOrangNgontrak> {
                     Text(
                       'Umur',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 16.sp,
                       ),
                     ),
                     SizedBox(
-                      height: 10.h,
+                      height: 10.sp,
                     ),
                     TextFormField(
                       keyboardType: TextInputType.number,
@@ -169,9 +169,9 @@ class _TambahOrangNgontrakState extends State<TambahOrangNgontrak> {
               ),
               Container(
                 margin: EdgeInsets.only(
-                  left: 20.w,
-                  right: 20.2,
-                  top: 20.h,
+                  left: 20.sp,
+                  right: 20.sp,
+                  top: 20.sp,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -179,11 +179,11 @@ class _TambahOrangNgontrakState extends State<TambahOrangNgontrak> {
                     Text(
                       'Alamat',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 16.sp,
                       ),
                     ),
                     SizedBox(
-                      height: 10.h,
+                      height: 10.sp,
                     ),
                     TextFormField(
                       cursorColor: Colors.black,
@@ -207,9 +207,9 @@ class _TambahOrangNgontrakState extends State<TambahOrangNgontrak> {
               ),
               Container(
                 margin: EdgeInsets.only(
-                  left: 20.w,
-                  right: 20.2,
-                  top: 20.h,
+                  left: 20.sp,
+                  right: 20.sp,
+                  top: 20.sp,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -217,11 +217,11 @@ class _TambahOrangNgontrakState extends State<TambahOrangNgontrak> {
                     Text(
                       'Alamat ngontrak sekarang',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 16.sp,
                       ),
                     ),
                     SizedBox(
-                      height: 10.h,
+                      height: 10.sp,
                     ),
                     TextFormField(
                       cursorColor: Colors.black,
@@ -245,9 +245,9 @@ class _TambahOrangNgontrakState extends State<TambahOrangNgontrak> {
               ),
               Container(
                 margin: EdgeInsets.only(
-                  left: 20.w,
-                  right: 20.2,
-                  top: 20.h,
+                  left: 20.sp,
+                  right: 20.sp,
+                  top: 20.sp,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -255,11 +255,11 @@ class _TambahOrangNgontrakState extends State<TambahOrangNgontrak> {
                     Text(
                       'Harga perbulan',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 16.sp,
                       ),
                     ),
                     SizedBox(
-                      height: 10.h,
+                      height: 10.sp,
                     ),
                     TextFormField(
                       keyboardType: TextInputType.number,
@@ -284,10 +284,10 @@ class _TambahOrangNgontrakState extends State<TambahOrangNgontrak> {
               ),
               Container(
                 margin: EdgeInsets.only(
-                  top: 24.h,
-                  left: 20.w,
-                  right: 20.w,
-                  bottom: 50.h,
+                  top: 24.sp,
+                  left: 20.sp,
+                  right: 20.sp,
+                  bottom: 50.sp,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -300,7 +300,7 @@ class _TambahOrangNgontrakState extends State<TambahOrangNgontrak> {
                     ),
                     Container(
                       margin: EdgeInsets.only(
-                        top: 12.h,
+                        top: 12.sp,
                       ),
                       width: double.infinity,
                       height: 250.h,
@@ -311,9 +311,9 @@ class _TambahOrangNgontrakState extends State<TambahOrangNgontrak> {
                     ),
                     Container(
                       margin: EdgeInsets.only(
-                        top: 20.h,
-                        left: 20.w,
-                        right: 20.w,
+                        top: 20.sp,
+                        left: 20.sp,
+                        right: 20.sp,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -343,7 +343,7 @@ class _TambahOrangNgontrakState extends State<TambahOrangNgontrak> {
                               color: Colors.white,
                               border: Border.all(
                                 color: Colors.blue,
-                                width: 2,
+                                width: 2.sp,
                               ),
                               borderRadius: BorderRadius.circular(8),
                             ),

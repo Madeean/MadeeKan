@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:madee_kan/Home/add_pembayaran.dart';
 import 'package:madee_kan/Home/belum_lunas_page.dart';
 import 'package:madee_kan/Home/list_orang_ngontrak.dart';
@@ -45,8 +46,8 @@ class _HomePageState extends State<HomePage> {
           topRight: Radius.circular(18),
         ),
       ),
-      height: height * 0.1,
-      padding: EdgeInsets.only(left: width * 0.06, right: width * 0.06),
+      height: 70.h,
+      padding: EdgeInsets.only(left: 20.sp, right: 20.sp),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
