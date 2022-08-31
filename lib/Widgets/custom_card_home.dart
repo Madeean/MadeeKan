@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:madee_kan/Home/detail_pengguna_page.dart';
 import 'package:madee_kan/Home/detail_transaksi_page.dart';
 
 class CustomCardHome extends StatefulWidget {
@@ -114,7 +115,12 @@ class _CustomCardHomeState extends State<CustomCardHome> {
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DetailPenggunaPage()));
+                    },
                     child: Text(
                       'Detail Pengguna',
                       style: TextStyle(

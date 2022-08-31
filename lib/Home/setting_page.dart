@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:madee_kan/Auth/login_page.dart';
+import 'package:madee_kan/Home/edit_profile_page.dart';
 import 'package:madee_kan/Home/home_page.dart';
 
 import '../Widgets/custom_setting_card.dart';
@@ -64,7 +65,7 @@ class _SettingPageState extends State<SettingPage> {
                     onTap: () async {
                       await Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => HomePage()),
+                        MaterialPageRoute(builder: (context) => EditProfile()),
                       );
                     },
                   ),

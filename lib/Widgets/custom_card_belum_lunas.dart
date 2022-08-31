@@ -71,12 +71,14 @@ class CustomCardBelumLunas extends StatelessWidget {
                   ],
                 ),
               ),
-              Text(
-                '$isLunas',
-                style: TextStyle(
-                  color: isLunas == "LUNAS" ? Colors.blue : Colors.red,
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.bold,
+              Expanded(
+                child: Text(
+                  '$isLunas',
+                  style: TextStyle(
+                    color: isLunas == "LUNAS" ? Colors.blue : Colors.red,
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ],

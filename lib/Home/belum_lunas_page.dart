@@ -26,13 +26,17 @@ class _BelumLunasPageState extends State<BelumLunasPage> {
       ),
       body: ListView(
         children: [
-          CustomCardBelumLunas(
-              alamat: "Kampung dadap no 5",
-              nama: "Made reihan",
-              baruBayar: "50.000",
-              jumlahBayar: "100.000",
-              tanggal: "26-12-2019",
-              isLunas: "BELUM LUNAS"),
+          Column(
+            children: [
+              CustomCardBelumLunas(
+                  alamat: "Kampung dadap no 5",
+                  nama: "Made reihan",
+                  baruBayar: "50.000",
+                  jumlahBayar: "100.000",
+                  tanggal: "26-12-2019",
+                  isLunas: "BELUM LUNAS"),
+            ],
+          ),
         ],
       ),
     );
