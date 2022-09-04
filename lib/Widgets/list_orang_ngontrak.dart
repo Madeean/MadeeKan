@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../Home/detail_pengguna_page.dart';
+
 class DaftarOrangNgontrak extends StatelessWidget {
   const DaftarOrangNgontrak({Key? key}) : super(key: key);
 
@@ -8,7 +10,8 @@ class DaftarOrangNgontrak extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print('tap');
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => DetailPenggunaPage()));
       },
       child: Container(
         decoration: BoxDecoration(

@@ -165,13 +165,14 @@ class _DetailPenggunaPageState extends State<DetailPenggunaPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'Tanggal Bergabung: ',
-                style: TextStyle(
-                  fontSize: 18.sp,
+              Expanded(
+                child: Text(
+                  'Tanggal Bergabung: ',
+                  style: TextStyle(
+                    fontSize: 18.sp,
+                  ),
                 ),
               ),
-              Spacer(),
               Text(
                 '26-12-2019',
                 style: TextStyle(
@@ -263,7 +264,7 @@ class _DetailPenggunaPageState extends State<DetailPenggunaPage> {
                 'Edit Pengguna',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 16.sp,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -285,8 +286,8 @@ class _DetailPenggunaPageState extends State<DetailPenggunaPage> {
                 'Hapus Pengguna',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             ),

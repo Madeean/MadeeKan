@@ -24,6 +24,10 @@ class CustomNavigationItem extends StatelessWidget {
         children: [
           SizedBox(),
           Container(
+            width: 40.w,
+            // decoration: BoxDecoration(
+            //   color: Colors.red,
+            // ),
             margin: EdgeInsets.only(
               top: 20.sp,
             ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../Home/detail_pengguna_page.dart';
 import '../Home/detail_transaksi_page.dart';
 
 class CustomCardBelumLunas extends StatelessWidget {
@@ -132,7 +133,12 @@ class CustomCardBelumLunas extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DetailPenggunaPage()));
+                    },
                     child: Expanded(
                       child: Text(
                         'Detail Pengguna',
