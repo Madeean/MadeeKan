@@ -2,10 +2,18 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:madee_kan/Home/home_page.dart';
+import 'package:madee_kan/Home/list_orang_ngontrak.dart';
+import 'package:madee_kan/Widgets/list_orang_ngontrak.dart';
+import 'package:madee_kan/Widgets/loading_button.dart';
+import 'package:madee_kan/cubit/kontrakan_cubit.dart';
+import 'package:madee_kan/cubit/page_cubit.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class TambahOrangNgontrak extends StatefulWidget {
   const TambahOrangNgontrak({Key? key}) : super(key: key);
@@ -15,6 +23,19 @@ class TambahOrangNgontrak extends StatefulWidget {
 }
 
 class _TambahOrangNgontrakState extends State<TambahOrangNgontrak> {
+  TextEditingController namaOrangNgontrakController =
+      TextEditingController(text: '');
+  TextEditingController umurOrangNgontrakController =
+      TextEditingController(text: '');
+  TextEditingController alamatAsliOrangNgontrakController =
+      TextEditingController(text: '');
+  TextEditingController alamatNgontrakSekarangController =
+      TextEditingController(text: '');
+  TextEditingController hargaPerbulanController =
+      TextEditingController(text: '');
+
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
   @override
   File? selectedImage;
   String base64Image = "";
@@ -34,9 +55,19 @@ class _TambahOrangNgontrakState extends State<TambahOrangNgontrak> {
     final ImagePicker pick = ImagePicker();
     if (type == "camera") {
       if (await checkAndRequestCameraPermissions()) {
-        image = await pick.getImage(
-          source: ImageSource.camera,
-        );
+        try {
+          image = await pick.getImage(
+            source: ImageSource.camera,
+          );
+        } catch (e) {
+          Fluttertoast.showToast(
+              msg: "permission denied",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              backgroundColor: Colors.red,
+              textColor: Colors.white,
+              fontSize: 16.0);
+        }
       } else {
         Fluttertoast.showToast(
             msg: "Permission Denied",
@@ -71,20 +102,6 @@ class _TambahOrangNgontrakState extends State<TambahOrangNgontrak> {
         automaticallyImplyLeading: true,
         backgroundColor: Colors.white,
         foregroundColor: Colors.blue,
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Text(
-              'Simpan',
-              style: TextStyle(
-                fontSize: 12.sp,
-                color: Colors.black,
-              ),
-            ),
-          ),
-        ],
       ),
       body: ListView(
         children: [
@@ -111,6 +128,7 @@ class _TambahOrangNgontrakState extends State<TambahOrangNgontrak> {
                     TextFormField(
                       cursorColor: Colors.black,
                       obscureText: false,
+                      controller: namaOrangNgontrakController,
                       // controller: controller,
                       decoration: InputDecoration(
                         hintText: "Nama Orang ngontrak",
@@ -147,6 +165,7 @@ class _TambahOrangNgontrakState extends State<TambahOrangNgontrak> {
                       height: 10.sp,
                     ),
                     TextFormField(
+                      controller: umurOrangNgontrakController,
                       keyboardType: TextInputType.number,
                       cursorColor: Colors.black,
                       obscureText: false,
@@ -186,6 +205,7 @@ class _TambahOrangNgontrakState extends State<TambahOrangNgontrak> {
                       height: 10.sp,
                     ),
                     TextFormField(
+                      controller: alamatAsliOrangNgontrakController,
                       cursorColor: Colors.black,
                       obscureText: false,
                       // controller: controller,
@@ -224,6 +244,7 @@ class _TambahOrangNgontrakState extends State<TambahOrangNgontrak> {
                       height: 10.sp,
                     ),
                     TextFormField(
+                      controller: alamatNgontrakSekarangController,
                       cursorColor: Colors.black,
                       obscureText: false,
                       // controller: controller,
@@ -262,6 +283,7 @@ class _TambahOrangNgontrakState extends State<TambahOrangNgontrak> {
                       height: 10.sp,
                     ),
                     TextFormField(
+                      controller: hargaPerbulanController,
                       keyboardType: TextInputType.number,
                       cursorColor: Colors.black,
                       obscureText: false,
@@ -360,7 +382,88 @@ class _TambahOrangNgontrakState extends State<TambahOrangNgontrak> {
                           ),
                         ],
                       ),
-                    )
+                    ),
+                    Center(
+                      child: BlocConsumer<KontrakanCubit, KontrakanState>(
+                        listener: (context, state) {
+                          // TODO: implement listener
+                          if (state is KontrakanFailed) {
+                            Fluttertoast.showToast(
+                                msg: state.error,
+                                backgroundColor: Colors.red,
+                                textColor: Colors.white);
+                          }
+                          if (state is addAnakKontrakanSuccess) {
+                            context.read<PageCubit>().setPage(2);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomePage()));
+                          }
+                        },
+                        builder: (context, state) {
+                          if (state is KontrakanLoading) {
+                            return LoadingButton(
+                              margin: EdgeInsets.only(
+                                top: 30.sp,
+                              ),
+                            );
+                          }
+                          return Container(
+                            width: 196.w,
+                            height: 70.h,
+                            margin: EdgeInsets.only(top: 40.sp, bottom: 10.sp),
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.circular(
+                                18,
+                              ),
+                            ),
+                            child: TextButton(
+                              onPressed: () async {
+                                final prefs = await _prefs;
+                                if (namaOrangNgontrakController.text.isEmpty ||
+                                    alamatNgontrakSekarangController
+                                        .text.isEmpty ||
+                                    hargaPerbulanController.text.isEmpty ||
+                                    selectedImage == null) {
+                                  Fluttertoast.showToast(
+                                      msg: "Data tidak boleh kosong",
+                                      backgroundColor: Colors.red,
+                                      textColor: Colors.white);
+                                } else {
+                                  String token = prefs.getString('token')!;
+                                  int harga =
+                                      int.parse(hargaPerbulanController.text);
+                                  int umur = int.parse(
+                                      umurOrangNgontrakController.text);
+                                  context.read<KontrakanCubit>().addKontrakan(
+                                        alamat_asli:
+                                            alamatAsliOrangNgontrakController
+                                                .text,
+                                        alamat_kontrakan:
+                                            alamatNgontrakSekarangController
+                                                .text,
+                                        harga_perbulan: harga,
+                                        name: namaOrangNgontrakController.text,
+                                        foto_muka: selectedImage!.path,
+                                        token: token,
+                                        umur: umur,
+                                      );
+                                }
+                              },
+                              child: Text(
+                                'Tambah',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20.sp,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
                   ],
                 ),
               ),
