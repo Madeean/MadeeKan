@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:madee_kan/Auth/login_page.dart';
 import 'package:madee_kan/Home/edit_profile_page.dart';
 import 'package:madee_kan/Home/home_page.dart';
+import 'package:madee_kan/cubit/auth_cubit.dart';
 
 import '../Widgets/custom_setting_card.dart';
 
@@ -17,72 +19,82 @@ class _SettingPageState extends State<SettingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(
-            'Settings',
-            style: TextStyle(color: Colors.blue, fontSize: 22.sp),
-          ),
-          elevation: 0,
-          automaticallyImplyLeading: false,
-          backgroundColor: Colors.white,
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          'Settings',
+          style: TextStyle(color: Colors.blue, fontSize: 22.sp),
         ),
-        body: Column(
-          children: [
-            Center(
-              child: Container(
-                padding: EdgeInsets.only(
-                  top: 20.h,
-                  left: 24.w,
-                  right: 24.w,
-                ),
-                child: Column(
-                  children: [
-                    Text(
-                      'Made Reihan Diva Suarna',
-                      style: TextStyle(
-                        fontSize: 24.sp,
-                        fontWeight: FontWeight.bold,
-                      ),
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.white,
+      ),
+      body: BlocBuilder<AuthCubit, AuthState>(
+        builder: (context, state) {
+          if (state is AuthSuccess) {
+            return Column(
+              children: [
+                Center(
+                  child: Container(
+                    padding: EdgeInsets.only(
+                      top: 20.h,
+                      left: 24.w,
+                      right: 24.w,
                     ),
-                    SizedBox(height: 10.h),
-                    Text(
-                      'Madee@gmail.com',
-                      style: TextStyle(
-                        fontSize: 22.sp,
-                      ),
+                    child: Column(
+                      children: [
+                        Text(
+                          '${state.user.name}',
+                          style: TextStyle(
+                            fontSize: 24.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 10.h),
+                        Text(
+                          '${state.user.email}',
+                          style: TextStyle(
+                            fontSize: 22.sp,
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            ),
-            Expanded(
-              child: ListView(
-                children: [
-                  SizedBox(height: 20.h),
-                  CustomSettingCard(
-                    title: 'Edit Profile',
-                    onTap: () async {
-                      await Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => EditProfile()),
-                      );
-                    },
+                Expanded(
+                  child: ListView(
+                    children: [
+                      SizedBox(height: 20.h),
+                      CustomSettingCard(
+                        title: 'Edit Profile',
+                        onTap: () async {
+                          await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => EditProfile()),
+                          );
+                        },
+                      ),
+                      CustomSettingCard(
+                        title: 'Logout',
+                        onTap: () async {
+                          await Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => LoginPage()),
+                              (route) => false);
+                        },
+                      ),
+                    ],
                   ),
-                  CustomSettingCard(
-                    title: 'Logout',
-                    onTap: () async {
-                      await Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(builder: (context) => LoginPage()),
-                          (route) => false);
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ));
+                ),
+              ],
+            );
+          }
+          return CircularProgressIndicator();
+        },
+      ),
+    );
   }
 }
 
