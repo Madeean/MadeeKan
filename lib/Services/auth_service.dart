@@ -56,4 +56,48 @@ class AuthService {
       throw e;
     }
   }
+
+  Future<UserModel> login({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      print("sampai");
+      var url = '$baseURL/login';
+      var headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      };
+      var body = {
+        'email': "$email",
+        'password': "$password",
+      };
+      print("3");
+
+      var response = await http.post(
+        Uri.parse(url),
+        headers: headers,
+        body: jsonEncode(body),
+      );
+      print(response.body);
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body)['user'];
+        data['token'] = jsonDecode(response.body)['token'];
+
+        UserModel user = UserModel(
+            id: data['id'],
+            name: data['name'],
+            email: data['email'],
+            yourKontrakanName: data['nama_kontrakan'],
+            howManyRooms: data['rooms'],
+            token: data['token']);
+        print("chekpoint");
+        return user;
+      } else {
+        throw Exception('Failed to login');
+      }
+    } catch (e) {
+      throw e;
+    }
+  }
 }

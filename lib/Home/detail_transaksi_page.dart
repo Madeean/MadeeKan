@@ -196,25 +196,24 @@ class _DetailTransaksiState extends State<DetailTransaksi> {
       builder: (context) {
         return SimpleDialog(
           title: Text.rich(
-            TextSpan(text: "Yakin ingin melunaskan  bulan ini?", children: [
+            TextSpan(text: "Yakin ingin menghapus  bulan ini?", children: [
               TextSpan(
                 style: TextStyle(fontWeight: FontWeight.normal),
-                text:
-                    "\nPastikan uang yang dibayarkan sudah lunas untuk bulan ini, jika tidak yakin bisa tekan tombol batal.",
+                text: "\nKomponen yang sudah dihapus tidak bisa dikembalikan",
               ),
             ]),
           ),
           children: [
             SimpleDialogOption(
               child: Text(
-                'YA',
+                'HAPUS',
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               onPressed: () {
-                print("melunaskan");
+                print("hapus");
               },
             ),
             SimpleDialogOption(
@@ -252,7 +251,7 @@ class _DetailTransaksiState extends State<DetailTransaksi> {
                 Yakin(context);
               },
               child: Text(
-                'LUNAS ?',
+                'Hapus Transaksi ?',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18.sp,
