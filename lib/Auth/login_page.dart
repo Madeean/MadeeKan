@@ -8,6 +8,7 @@ import 'package:madee_kan/Auth/register_page.dart';
 import 'package:madee_kan/Home/home_page.dart';
 import 'package:madee_kan/Widgets/loading_button.dart';
 import 'package:madee_kan/cubit/auth_cubit.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -20,6 +21,39 @@ class _LoginPageState extends State<LoginPage> {
   bool isloading = false;
   TextEditingController emailController = TextEditingController(text: '');
   TextEditingController passwordController = TextEditingController(text: '');
+
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _checkLogin();
+  }
+
+  void _checkLogin() async {
+    final prefs = await _prefs;
+    if (prefs.getString('email') != null &&
+        prefs.getString('token') != null &&
+        prefs.getString('password') != null) {
+      loginautomatically();
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => HomePage(),
+        ),
+      );
+    }
+  }
+
+  void loginautomatically() async {
+    final prefs = await _prefs;
+    BlocProvider.of<AuthCubit>(context).login(
+      email: prefs.getString('email')!,
+      password: prefs.getString('password')!,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;

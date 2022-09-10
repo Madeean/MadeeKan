@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:madee_kan/Services/auth_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Models/user_model.dart';
 
@@ -26,6 +27,12 @@ class AuthCubit extends Cubit<AuthState> {
         howManyRooms: howManyRooms,
       );
 
+      final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+      final prefs = await _prefs;
+      prefs.setString('email', user.email);
+      prefs.setString('token', user.token);
+      prefs.setString('password', password);
+
       emit(AuthSuccess(user));
     } catch (e) {
       emit(AuthFailed(e.toString()));
@@ -43,6 +50,12 @@ class AuthCubit extends Cubit<AuthState> {
         password: password,
       );
 
+      final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+      final prefs = await _prefs;
+      prefs.setString('email', user.email);
+      prefs.setString('token', user.token);
+      prefs.setString('password', password);
+
       emit(AuthSuccess(user));
     } catch (e) {
       emit(AuthFailed(e.toString()));
@@ -55,6 +68,11 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       emit(AuthLoading());
       await AuthService().logout(token: token);
+      final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+      final prefs = await _prefs;
+      prefs.remove('email');
+      prefs.remove('token');
+      prefs.remove('password');
       emit(AuthInitial());
     } catch (e) {
       emit(AuthFailed(e.toString()));
