@@ -100,4 +100,25 @@ class AuthService {
       throw e;
     }
   }
+
+  Future<void> logout({
+    required String token,
+  }) async {
+    var url = '$baseURL/logout';
+    var headers = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $token'
+    };
+    var response = await http.post(
+      Uri.parse(url),
+      headers: headers,
+    );
+    print(response.body);
+    if (response.statusCode == 200) {
+      return;
+    } else {
+      throw Exception('Failed to logout');
+    }
+  }
 }

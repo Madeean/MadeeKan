@@ -5,6 +5,7 @@ import 'package:madee_kan/Auth/login_page.dart';
 import 'package:madee_kan/Home/edit_profile_page.dart';
 import 'package:madee_kan/Home/home_page.dart';
 import 'package:madee_kan/cubit/auth_cubit.dart';
+import 'package:madee_kan/cubit/page_cubit.dart';
 
 import '../Widgets/custom_setting_card.dart';
 
@@ -29,8 +30,27 @@ class _SettingPageState extends State<SettingPage> {
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
       ),
-      body: BlocBuilder<AuthCubit, AuthState>(
+      body: BlocConsumer<AuthCubit, AuthState>(
+        listener: (context, state) {
+          if (state is AuthFailed) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.error),
+              ),
+            );
+          }
+          if (state is AuthInitial) {
+            context.read<PageCubit>().setPage(0);
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => LoginPage()),
+                (route) => false);
+          }
+        },
         builder: (context, state) {
+          if (state is AuthLoading) {
+            return Center(child: CircularProgressIndicator());
+          }
           if (state is AuthSuccess) {
             return Column(
               children: [
@@ -77,12 +97,10 @@ class _SettingPageState extends State<SettingPage> {
                       ),
                       CustomSettingCard(
                         title: 'Logout',
-                        onTap: () async {
-                          await Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => LoginPage()),
-                              (route) => false);
+                        onTap: () {
+                          context
+                              .read<AuthCubit>()
+                              .logout(token: state.user.token);
                         },
                       ),
                     ],

@@ -48,4 +48,16 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthFailed(e.toString()));
     }
   }
+
+  void logout({
+    required String token,
+  }) async {
+    try {
+      emit(AuthLoading());
+      await AuthService().logout(token: token);
+      emit(AuthInitial());
+    } catch (e) {
+      emit(AuthFailed(e.toString()));
+    }
+  }
 }

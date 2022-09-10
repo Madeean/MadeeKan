@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:madee_kan/Widgets/custom_card_home.dart';
+import 'package:madee_kan/cubit/auth_cubit.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -29,39 +31,46 @@ class _LandingPageState extends State<LandingPage> {
           ),
           child: Column(
             children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+              BlocBuilder<AuthCubit, AuthState>(
+                builder: (context, state) {
+                  if (state is AuthSuccess) {
+                    return Row(
                       children: [
-                        Text(
-                          'Madee',
-                          style: TextStyle(
-                            fontSize: 24.sp,
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '${state.user.name}',
+                                style: TextStyle(
+                                  fontSize: 24.sp,
+                                ),
+                              ),
+                              Text(
+                                'Jumlah Orang : 0/${state.user.howManyRooms}',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        Text(
-                          'Jumlah Orang : 15/30',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w300,
-                          ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              dateStr,
+                              style: TextStyle(
+                                fontSize: 20.sp,
+                              ),
+                            ),
+                          ],
                         ),
                       ],
-                    ),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        dateStr,
-                        style: TextStyle(
-                          fontSize: 20.sp,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+                    );
+                  }
+                  return CircularProgressIndicator();
+                },
               ),
               Container(
                 margin: EdgeInsets.only(top: 21.sp),
