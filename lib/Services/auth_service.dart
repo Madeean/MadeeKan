@@ -35,7 +35,6 @@ class AuthService {
         headers: headers,
         body: jsonEncode(body),
       );
-      print(response.body);
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body)['user'];
         data['token'] = jsonDecode(response.body)['token'];
@@ -79,7 +78,6 @@ class AuthService {
         headers: headers,
         body: jsonEncode(body),
       );
-      print(response.body);
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body)['user'];
         data['token'] = jsonDecode(response.body)['token'];
@@ -114,7 +112,6 @@ class AuthService {
       Uri.parse(url),
       headers: headers,
     );
-    print(response.body);
     if (response.statusCode == 200) {
       return;
     } else {

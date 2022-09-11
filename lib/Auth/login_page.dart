@@ -183,8 +183,6 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             child: TextButton(
                               onPressed: () {
-                                print("width $width");
-                                print("height ");
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(

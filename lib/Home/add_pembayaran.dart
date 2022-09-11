@@ -3,11 +3,14 @@ import 'dart:io';
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:madee_kan/Widgets/loading_button.dart';
+import 'package:madee_kan/cubit/kontrakan_cubit.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'home_page.dart';
 
@@ -19,21 +22,32 @@ class AddPembayaran extends StatefulWidget {
 }
 
 class _AddPembayaranState extends State<AddPembayaran> {
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   DateTime selectedDate = DateTime.now();
-  TimeOfDay startTime = TimeOfDay.now();
-  TimeOfDay endTime = TimeOfDay.now();
+  TextEditingController jumlahBayarController = TextEditingController(text: '');
 
   bool isLoading = false;
 
   String? _currentName;
 
-  final nameList = [
-    'Kamar 1',
-    'Kamar 2',
-    'Kamar 3',
-    'Kamar 4',
-    'Kamar 5',
-  ];
+  @override
+  void initState() {
+    super.initState();
+    getNamaAnakKontrakan();
+  }
+
+  List<String> nameList = [];
+
+  getNamaAnakKontrakan() async {
+    final prefs = await _prefs;
+    String token = prefs.getString('token')!;
+    List<String> dataBaruDiGet = [];
+    dataBaruDiGet =
+        await context.read<KontrakanCubit>().getNamaAnakKontrakan(token: token);
+    setState(() {
+      nameList = dataBaruDiGet;
+    });
+  }
 
   _selectDate(BuildContext context) async {
     final DateTime? selected = await showDatePicker(
@@ -344,7 +358,6 @@ class _AddPembayaranState extends State<AddPembayaran> {
               ),
               child: TextButton(
                 onPressed: () {
-                  print('s');
                   setState(() {
                     isLoading = true;
                   });
