@@ -30,3 +30,12 @@ class KontrakanFailed extends KontrakanState {
 }
 
 class addAnakKontrakanSuccess extends KontrakanState {}
+
+class getAnakKontrakanSuccess extends KontrakanState {
+  final List<AnakKontrakan> anakKontrakan;
+  getAnakKontrakanSuccess(this.anakKontrakan);
+
+  @override
+  // TODO: implement props
+  List<Object> get props => [anakKontrakan];
+}

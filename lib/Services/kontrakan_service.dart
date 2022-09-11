@@ -56,4 +56,34 @@ class KontrakanService {
       throw e;
     }
   }
+
+  Future<List<AnakKontrakan>> getAnakKontrakan({
+    required String token,
+  }) async {
+    try {
+      var url = '$baseURL/get-anak-kontrakan';
+      var headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token'
+      };
+      var response = await http.get(
+        Uri.parse(url),
+        headers: headers,
+      );
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body)['data'];
+        print(data);
+        List<AnakKontrakan> anakKontrakan = [];
+        for (var item in data) {
+          anakKontrakan.add(AnakKontrakan.fromJson(item));
+        }
+        return anakKontrakan;
+      } else {
+        throw Exception('Failed to get anak kontrakan');
+      }
+    } catch (e) {
+      throw e;
+    }
+  }
 }

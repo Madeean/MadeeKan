@@ -123,31 +123,31 @@ class CustomCardBelumLunas extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
-                  width: 140.w,
-                  height: 67.h,
-                  decoration: BoxDecoration(
-                    color: Colors.indigo,
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => DetailPenggunaPage()));
-                    },
-                    child: Expanded(
-                      child: Text(
-                        'Detail Pengguna',
-                        style: TextStyle(
-                          fontSize: 10.sp,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                // Container(
+                //   width: 140.w,
+                //   height: 67.h,
+                //   decoration: BoxDecoration(
+                //     color: Colors.indigo,
+                //     borderRadius: BorderRadius.circular(16),
+                //   ),
+                //   child: TextButton(
+                //     onPressed: () {
+                //       Navigator.push(
+                //           context,
+                //           MaterialPageRoute(
+                //               builder: (context) => DetailPenggunaPage()));
+                //     },
+                //     child: Expanded(
+                //       child: Text(
+                //         'Detail Pengguna',
+                //         style: TextStyle(
+                //           fontSize: 10.sp,
+                //           color: Colors.white,
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           )

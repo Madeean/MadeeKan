@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:madee_kan/Models/anak_kontrakan_model.dart';
 
 class DetailPenggunaPage extends StatefulWidget {
-  const DetailPenggunaPage({Key? key}) : super(key: key);
+  final AnakKontrakan anakKontrakan;
+  const DetailPenggunaPage({Key? key, required this.anakKontrakan})
+      : super(key: key);
 
   @override
   State<DetailPenggunaPage> createState() => _DetailPenggunaPageState();
@@ -19,7 +22,7 @@ class _DetailPenggunaPageState extends State<DetailPenggunaPage> {
             decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: AssetImage('assets/PickImage.png'),
+                image: NetworkImage('${widget.anakKontrakan.foto_muka}'),
               ),
             ),
           ),
@@ -48,7 +51,7 @@ class _DetailPenggunaPageState extends State<DetailPenggunaPage> {
               Spacer(),
               Expanded(
                 child: Text(
-                  'Made Reihan',
+                  '${widget.anakKontrakan.name}',
                   style: TextStyle(
                     fontSize: 18.sp,
                   ),
@@ -74,7 +77,7 @@ class _DetailPenggunaPageState extends State<DetailPenggunaPage> {
               Spacer(),
               Expanded(
                 child: Text(
-                  '20',
+                  '${widget.anakKontrakan.umur}',
                   style: TextStyle(
                     fontSize: 18.sp,
                   ),
@@ -100,7 +103,7 @@ class _DetailPenggunaPageState extends State<DetailPenggunaPage> {
               Spacer(),
               Expanded(
                 child: Text(
-                  'BSD',
+                  '${widget.anakKontrakan.alamat_asli}',
                   style: TextStyle(
                     fontSize: 18.sp,
                   ),
@@ -126,7 +129,7 @@ class _DetailPenggunaPageState extends State<DetailPenggunaPage> {
               Spacer(),
               Expanded(
                 child: Text(
-                  'Kampung dadap no5',
+                  '${widget.anakKontrakan.alamat_kontrakan}',
                   style: TextStyle(
                     fontSize: 18.sp,
                   ),
@@ -151,7 +154,7 @@ class _DetailPenggunaPageState extends State<DetailPenggunaPage> {
               ),
               Spacer(),
               Text(
-                '100.000',
+                'Rp. ${widget.anakKontrakan.harga_perbulan}',
                 style: TextStyle(
                   fontSize: 18.sp,
                 ),
@@ -174,7 +177,7 @@ class _DetailPenggunaPageState extends State<DetailPenggunaPage> {
                 ),
               ),
               Text(
-                '26-12-2019',
+                '${widget.anakKontrakan.created}',
                 style: TextStyle(
                   fontSize: 18.sp,
                 ),

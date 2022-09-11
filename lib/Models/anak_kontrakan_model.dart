@@ -25,6 +25,21 @@ class AnakKontrakan extends Equatable {
     required this.updated,
   });
 
+  factory AnakKontrakan.fromJson(Map<String, dynamic> json) {
+    return AnakKontrakan(
+      id: json['id'],
+      name: json['name'],
+      umur: json['umur'],
+      alamat_asli: json['alamat_asli'],
+      alamat_kontrakan: json['alamat_kontrakan'],
+      harga_perbulan: json['harga_perbulan'],
+      foto_muka: json['foto_muka'],
+      user_id: json['user_id'],
+      created: json['created'],
+      updated: json['updated'],
+    );
+  }
+
   @override
   // TODO: implement props
   List<Object?> get props => [

@@ -33,4 +33,15 @@ class KontrakanCubit extends Cubit<KontrakanState> {
       emit(KontrakanFailed(e.toString()));
     }
   }
+
+  void getAnakKontrakan({required String token}) async {
+    try {
+      emit(KontrakanLoading());
+      List<AnakKontrakan> anakKontrakan =
+          await KontrakanService().getAnakKontrakan(token: token);
+      emit(getAnakKontrakanSuccess(anakKontrakan));
+    } catch (e) {
+      emit(KontrakanFailed(e.toString()));
+    }
+  }
 }
