@@ -114,4 +114,30 @@ class KontrakanService {
       throw e;
     }
   }
+
+  Future<void> hapusAnakKontrakan({
+    required String token,
+    required int id,
+  }) async {
+    try {
+      var url = '$baseURL/delete/anak-kontrakan/$id';
+      var headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token'
+      };
+      var response = await http.post(
+        Uri.parse(url),
+        headers: headers,
+      );
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body);
+        print(data);
+      } else {
+        throw Exception('Failed to hapus anak kontrakan');
+      }
+    } catch (e) {
+      throw e;
+    }
+  }
 }

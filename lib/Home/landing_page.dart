@@ -80,7 +80,7 @@ class _LandingPageState extends State<LandingPage> {
                 child: TextField(
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.search),
-                    hintText: "Cari anak kost",
+                    hintText: "Cari orang kontrakan",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(
                         18,

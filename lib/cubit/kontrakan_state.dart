@@ -39,3 +39,5 @@ class getAnakKontrakanSuccess extends KontrakanState {
   // TODO: implement props
   List<Object> get props => [anakKontrakan];
 }
+
+class hapusAnakKontrakanSuccess extends KontrakanState {}

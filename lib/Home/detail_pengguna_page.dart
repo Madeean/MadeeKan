@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:madee_kan/Home/home_page.dart';
 import 'package:madee_kan/Models/anak_kontrakan_model.dart';
+import 'package:madee_kan/cubit/kontrakan_cubit.dart';
+import 'package:madee_kan/cubit/page_cubit.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DetailPenggunaPage extends StatefulWidget {
   final AnakKontrakan anakKontrakan;
@@ -12,6 +18,8 @@ class DetailPenggunaPage extends StatefulWidget {
 }
 
 class _DetailPenggunaPageState extends State<DetailPenggunaPage> {
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
   Widget GambarBukti() {
     return Container(
       width: double.infinity,
@@ -211,16 +219,43 @@ class _DetailPenggunaPageState extends State<DetailPenggunaPage> {
             ),
           ),
           children: [
-            SimpleDialogOption(
-              child: Text(
-                'HAPUS',
-                style: TextStyle(
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              onPressed: () {
-                print("Hapus");
+            BlocConsumer<KontrakanCubit, KontrakanState>(
+              listener: (context, state) {
+                if (state is KontrakanFailed) {
+                  Fluttertoast.showToast(
+                      msg: state.error,
+                      backgroundColor: Colors.red,
+                      textColor: Colors.white);
+                }
+                if (state is hapusAnakKontrakanSuccess) {
+                  context.read<PageCubit>().setPage(0);
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomePage()));
+                }
+              },
+              builder: (context, state) {
+                if (state is KontrakanLoading) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                return SimpleDialogOption(
+                  child: Text(
+                    'HAPUS',
+                    style: TextStyle(
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  onPressed: () async {
+                    final prefs = await _prefs;
+                    String token = prefs.getString('token')!;
+                    context.read<KontrakanCubit>().hapusAnakKontrakan(
+                          id: widget.anakKontrakan.id,
+                          token: token,
+                        );
+                  },
+                );
               },
             ),
             SimpleDialogOption(

@@ -45,6 +45,17 @@ class KontrakanCubit extends Cubit<KontrakanState> {
     }
   }
 
+  void hapusAnakKontrakan({required String token, required int id}) async {
+    try {
+      emit(KontrakanLoading());
+      var anakKontrakan =
+          await KontrakanService().hapusAnakKontrakan(token: token, id: id);
+      emit(hapusAnakKontrakanSuccess());
+    } catch (e) {
+      emit(KontrakanFailed(e.toString()));
+    }
+  }
+
   Future<List<String>> getNamaAnakKontrakan({required String token}) async {
     try {
       List<String> namaAnakKontrakan =
