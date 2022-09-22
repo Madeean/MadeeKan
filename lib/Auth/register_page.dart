@@ -283,14 +283,30 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       child: TextButton(
                         onPressed: () {
-                          int rooms = int.parse(howManyRoomsController.text);
-                          context.read<AuthCubit>().register(
-                                name: nameController.text,
-                                email: emailController.text,
-                                password: passwordController.text,
-                                kontrakanName: yourKontrakanNameController.text,
-                                howManyRooms: rooms,
-                              );
+                          if (emailController.text.isEmpty ||
+                              passwordController.text.isEmpty ||
+                              nameController.text.isEmpty ||
+                              yourKontrakanNameController.text.isEmpty ||
+                              howManyRoomsController.text.isEmpty) {
+                            Fluttertoast.showToast(
+                                msg: "Please fill all the field",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.red,
+                                textColor: Colors.white,
+                                fontSize: 16.0.sp);
+                          } else {
+                            int rooms = int.parse(howManyRoomsController.text);
+                            context.read<AuthCubit>().register(
+                                  name: nameController.text,
+                                  email: emailController.text,
+                                  password: passwordController.text,
+                                  kontrakanName:
+                                      yourKontrakanNameController.text,
+                                  howManyRooms: rooms,
+                                );
+                          }
                         },
                         child: Text(
                           'Register',

@@ -157,10 +157,22 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             child: TextButton(
                               onPressed: () {
-                                BlocProvider.of<AuthCubit>(context).login(
-                                  email: emailController.text,
-                                  password: passwordController.text,
-                                );
+                                if (emailController.text == '' ||
+                                    passwordController.text == '') {
+                                  Fluttertoast.showToast(
+                                      msg: 'Please fill all the fields',
+                                      toastLength: Toast.LENGTH_SHORT,
+                                      gravity: ToastGravity.BOTTOM,
+                                      timeInSecForIosWeb: 1,
+                                      backgroundColor: Colors.red,
+                                      textColor: Colors.white,
+                                      fontSize: 16.0.sp);
+                                } else {
+                                  BlocProvider.of<AuthCubit>(context).login(
+                                    email: emailController.text,
+                                    password: passwordController.text,
+                                  );
+                                }
                               },
                               child: Text(
                                 'Login',
