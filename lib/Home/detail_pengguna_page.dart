@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:madee_kan/Home/edit_anak_kontrakan.dart';
 import 'package:madee_kan/Home/home_page.dart';
 import 'package:madee_kan/Models/anak_kontrakan_model.dart';
 import 'package:madee_kan/cubit/kontrakan_cubit.dart';
@@ -296,7 +297,10 @@ class _DetailPenggunaPageState extends State<DetailPenggunaPage> {
             ),
             child: TextButton(
               onPressed: () {
-                print("edit pengguna");
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => EditAnakKontrakan()));
               },
               child: Text(
                 'Edit Pengguna',
