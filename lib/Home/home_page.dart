@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:madee_kan/Home/add_pembayaran.dart';
+import 'package:madee_kan/Home/belum_bayar_bulan_ini.dart';
 import 'package:madee_kan/Home/belum_lunas_page.dart';
 import 'package:madee_kan/Home/list_orang_ngontrak.dart';
 import 'package:madee_kan/Home/setting_page.dart';
@@ -29,6 +30,8 @@ class _HomePageState extends State<HomePage> {
       case 3:
         return BelumLunasPage();
       case 4:
+        return BelumBayarBulanIni();
+      case 5:
         return SettingPage();
       default:
         return LandingPage();
@@ -56,20 +59,12 @@ class _HomePageState extends State<HomePage> {
             index: 0,
           ),
           CustomNavigationItem(
-            imageUrl: 'assets/plus.png',
-            index: 1,
-          ),
-          CustomNavigationItem(
-            imageUrl: 'assets/list.png',
-            index: 2,
-          ),
-          CustomNavigationItem(
-            imageUrl: 'assets/cross-circle.png',
-            index: 3,
+            imageUrl: 'assets/user.png',
+            index: 4,
           ),
           CustomNavigationItem(
             imageUrl: 'assets/icon_settings.png',
-            index: 4,
+            index: 5,
           ),
         ],
       ),

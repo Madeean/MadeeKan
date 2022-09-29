@@ -8,6 +8,7 @@ import 'package:madee_kan/cubit/auth_cubit.dart';
 import 'package:madee_kan/cubit/page_cubit.dart';
 
 import '../Widgets/custom_setting_card.dart';
+import 'navbar.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({Key? key}) : super(key: key);
@@ -17,9 +18,12 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: NavBar(),
       appBar: AppBar(
         centerTitle: true,
         title: Text(
@@ -27,8 +31,9 @@ class _SettingPageState extends State<SettingPage> {
           style: TextStyle(color: Colors.blue, fontSize: 22.sp),
         ),
         elevation: 0,
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
         backgroundColor: Colors.white,
+        foregroundColor: Colors.blue,
       ),
       body: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {

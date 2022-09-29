@@ -7,6 +7,8 @@ import 'package:madee_kan/Widgets/custom_card_home.dart';
 import 'package:madee_kan/cubit/auth_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'navbar.dart';
+
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
 
@@ -19,6 +21,8 @@ class _LandingPageState extends State<LandingPage> {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<ScaffoldState> _scaffoldKey =
+        new GlobalKey<ScaffoldState>();
     DateTime today = DateTime.now();
     String dateStr = "${today.day}-${today.month}-${today.year}";
 
@@ -39,6 +43,17 @@ class _LandingPageState extends State<LandingPage> {
                   if (state is AuthSuccess) {
                     return Row(
                       children: [
+                        GestureDetector(
+                          onTap: () => _scaffoldKey.currentState?.openDrawer(),
+                          child: Icon(
+                            Icons.menu,
+                            color: Colors.blue,
+                            size: 24.sp,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 20.sp,
+                        ),
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -115,6 +130,8 @@ class _LandingPageState extends State<LandingPage> {
     }
 
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: NavBar(),
       backgroundColor: Colors.white,
       body: RefreshIndicator(
         onRefresh: () {

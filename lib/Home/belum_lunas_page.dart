@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:madee_kan/Widgets/custom_card_belum_lunas.dart';
 
+import 'navbar.dart';
+
 class BelumLunasPage extends StatefulWidget {
   const BelumLunasPage({Key? key}) : super(key: key);
 
@@ -9,9 +11,12 @@ class BelumLunasPage extends StatefulWidget {
 }
 
 class _BelumLunasPageState extends State<BelumLunasPage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: NavBar(),
       appBar: AppBar(
         centerTitle: true,
         title: Text(
@@ -21,8 +26,9 @@ class _BelumLunasPageState extends State<BelumLunasPage> {
           ),
         ),
         elevation: 0,
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
         backgroundColor: Colors.white,
+        foregroundColor: Colors.blue,
       ),
       body: ListView(
         children: [

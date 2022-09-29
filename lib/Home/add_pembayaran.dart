@@ -13,6 +13,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'home_page.dart';
+import 'navbar.dart';
 
 class AddPembayaran extends StatefulWidget {
   const AddPembayaran({Key? key}) : super(key: key);
@@ -23,6 +24,7 @@ class AddPembayaran extends StatefulWidget {
 
 class _AddPembayaranState extends State<AddPembayaran> {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   DateTime selectedDate = DateTime.now();
   TextEditingController jumlahBayarController = TextEditingController(text: '');
 
@@ -385,6 +387,8 @@ class _AddPembayaranState extends State<AddPembayaran> {
     final height = MediaQuery.of(context).size.height;
     DateTime today = DateTime.now();
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: NavBar(),
       appBar: AppBar(
         title: Text(
           'Pembayaran Bulan ${today.month}',
@@ -396,7 +400,8 @@ class _AddPembayaranState extends State<AddPembayaran> {
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
+        foregroundColor: Colors.blue,
       ),
       body: ListView(
         children: [

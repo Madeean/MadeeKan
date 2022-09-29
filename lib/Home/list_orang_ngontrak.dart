@@ -8,6 +8,8 @@ import 'package:madee_kan/Widgets/list_orang_ngontrak.dart';
 import 'package:madee_kan/cubit/kontrakan_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'navbar.dart';
+
 class ListOrangNgontrak extends StatefulWidget {
   const ListOrangNgontrak({Key? key}) : super(key: key);
 
@@ -16,6 +18,7 @@ class ListOrangNgontrak extends StatefulWidget {
 }
 
 class _ListOrangNgontrakState extends State<ListOrangNgontrak> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   @override
@@ -34,6 +37,8 @@ class _ListOrangNgontrakState extends State<ListOrangNgontrak> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: NavBar(),
       appBar: AppBar(
         centerTitle: true,
         title: Text(
@@ -41,7 +46,8 @@ class _ListOrangNgontrakState extends State<ListOrangNgontrak> {
           style: TextStyle(color: Colors.blue, fontSize: 22.sp),
         ),
         elevation: 0,
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
+        foregroundColor: Colors.blue,
         backgroundColor: Colors.white,
         actions: [
           TextButton(

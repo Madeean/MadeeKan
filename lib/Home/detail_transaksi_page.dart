@@ -251,7 +251,7 @@ class _DetailTransaksiState extends State<DetailTransaksi> {
                 Yakin(context);
               },
               child: Text(
-                'Hapus Transaksi ?',
+                'Hapus Transaksi',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18.sp,
