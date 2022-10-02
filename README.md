@@ -1,3 +1,3 @@
 # madee_kan
 
-Buat UAS Cross Platform ceritanya
+Buat UAS Cross Platform
