@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:madee_kan/cubit/auth_cubit.dart';
 import 'package:madee_kan/cubit/kontrakan_cubit.dart';
 import 'package:madee_kan/cubit/page_cubit.dart';
+import 'package:madee_kan/cubit/pembayaran_cubit.dart';
 
 import 'Auth/login_page.dart';
 
@@ -28,6 +29,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => KontrakanCubit(),
+        ),
+        BlocProvider(
+          create: (context) => PembayaranCubit(),
         ),
       ],
       child: ScreenUtilInit(

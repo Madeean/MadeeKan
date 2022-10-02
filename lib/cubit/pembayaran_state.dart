@@ -11,6 +11,8 @@ class PembayaranInitial extends PembayaranState {}
 
 class PembayaranLoading extends PembayaranState {}
 
+class PembayaranSuccessDataKosong extends PembayaranState {}
+
 class PembayaranSuccess extends PembayaranState {
   final List<PembayaranModel> pembayaran;
 
@@ -20,9 +22,9 @@ class PembayaranSuccess extends PembayaranState {
   List<Object> get props => [pembayaran];
 }
 
-class AuthFailed extends PembayaranState {
+class PembayaranFailed extends PembayaranState {
   final String error;
-  AuthFailed(this.error);
+  PembayaranFailed(this.error);
 
   @override
   // TODO: implement props
