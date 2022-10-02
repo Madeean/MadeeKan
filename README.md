@@ -1,3 +1,3 @@
 # madee_kan
 
-Buat UAS Cross Platform
+untuk uas cross platform
